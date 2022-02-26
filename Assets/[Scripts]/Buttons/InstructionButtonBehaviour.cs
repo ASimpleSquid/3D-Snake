@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class InstructionnButtonBehaviour : MonoBehaviour
+public class InstructionButtonBehaviour : MonoBehaviour
 {
     public void OnInstructionButtonPressed()
     {
