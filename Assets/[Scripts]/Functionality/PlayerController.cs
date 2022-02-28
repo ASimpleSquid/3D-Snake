@@ -136,4 +136,25 @@ public class PlayerController : MonoBehaviour
             move = true;
         }
     }
+
+    public void SetInputDirection(PlayerDirection dir)
+    {
+        if (dir == PlayerDirection.UP && direction == PlayerDirection.DOWN || dir == PlayerDirection.DOWN && direction == PlayerDirection.UP ||
+            dir == PlayerDirection.RIGHT && direction == PlayerDirection.LEFT || dir == PlayerDirection.LEFT && direction == PlayerDirection.RIGHT)
+        {
+            return;
+        }
+
+        direction = dir;
+
+        ForceMove();
+
+    }
+
+    void ForceMove()
+    {
+        counter = 0;
+        move = false;
+        Move();
+    }
 }
