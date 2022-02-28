@@ -40,7 +40,7 @@ public class ScoreTrack : MonoBehaviour
         StartCoroutine(SpawnPickUps());
     }
 
-    public void CancekSpawning()
+    public void CancelSpawning()
     {
         CancelInvoke("StartSpawning");
     }
