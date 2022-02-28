@@ -157,4 +157,12 @@ public class PlayerController : MonoBehaviour
         move = false;
         Move();
     }
+
+    void OnTriggerEnter(Collider other)
+    {
+        if(other.tag == Tags.WALL)
+        {
+            print("Touched Wall! Ouch!");
+        }
+    }
 }

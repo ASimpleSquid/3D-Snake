@@ -5,7 +5,7 @@ using UnityEngine.InputSystem;
 
 public class PlayerInput : MonoBehaviour
 {
-    public InputAction PlayerControls;
+    CharacterControls input;
 
     private PlayerController playerController;
 
@@ -17,14 +17,27 @@ public class PlayerInput : MonoBehaviour
         Vertical
     }
 
+    void OnEnable()
+    {
+        input.Player.Enable();
+    }
+
+    void OnDisable()
+    {
+        input.Player.Disable();
+    }
+
     void Awake()
     {
-        playerController = GetComponent<PlayerController>();
+        input = new CharacterControls();
+
+        input.Player.Movement.performed += ctx => Debug.Log(ctx.ReadValueAsObject());
     }
 
     
     void Update()
     {
+
         horizontal = 0;
         vertical = 0;
 
