@@ -29,12 +29,14 @@ public class PlayerController : MonoBehaviour
     private Rigidbody main_Body;
     private Rigidbody head_Body;
     private Transform tr;
+    private SoundHandler sh;
 
     private bool create_Node_At_Tail;
 
     private void Awake()
     {
         tr = transform;
+        sh = GetComponent<SoundHandler>();
         main_Body = GetComponent<Rigidbody>();
 
         InitSnakeNodes();
@@ -194,6 +196,8 @@ public class PlayerController : MonoBehaviour
 
         if (other.tag == "Pellet")
         {
+            sh.PlayBite();
+            ScoreTrack.instance.IncreaseScore();
             Debug.Log("Yummy!");
             other.gameObject.SetActive(false);
             create_Node_At_Tail = true;
