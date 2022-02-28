@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 528777787255276043}
   m_Layer: 0
   m_Name: Tail
-  m_TagString: Untagged
+  m_TagString: Tail
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -419,6 +419,7 @@ MonoBehaviour:
   step_Length: 0.2
   movement_Frequency: 0.1
   tail: {fileID: 1153077532161509775, guid: 6302d2194bac42146b9f679b17c15422, type: 3}
+  gameOverMenu: {fileID: 0}
 --- !u!114 &8428021791854219179
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -431,6 +432,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e534db11f12309245bafbf4e6113d8a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerController: {fileID: 0}
 --- !u!114 &772939998
 MonoBehaviour:
   m_ObjectHideFlags: 0

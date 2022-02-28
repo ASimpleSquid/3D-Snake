@@ -185,6 +185,13 @@ public class PlayerController : MonoBehaviour
             Debug.Log("Ate a Bomb! Ouch!");
         }
 
+        if (other.tag == "Tail")
+        {
+            Time.timeScale = 0f;
+            gameOverMenu.SetActive(true);
+            Debug.Log("Ate Yourself..? Ouch?");
+        }
+
         if (other.tag == "Pellet")
         {
             Debug.Log("Yummy!");
