@@ -7,7 +7,9 @@ public class PlayerInput : MonoBehaviour
 {
     CharacterControls input;
 
-    private PlayerController playerController;
+    Vector2 currentMovement;
+
+    public PlayerController playerController;
 
     private int horizontal = 0, vertical = 0;
 
@@ -16,30 +18,20 @@ public class PlayerInput : MonoBehaviour
         Horizontal,
         Vertical
     }
-
-    void OnEnable()
-    {
-        input.Player.Enable();
-    }
-
-    void OnDisable()
-    {
-        input.Player.Disable();
-    }
-
     void Awake()
     {
-        input = new CharacterControls();
-
-        input.Player.Movement.performed += ctx => Debug.Log(ctx.ReadValueAsObject());
+        playerController = GetComponent<PlayerController>();
     }
+    public void OnMovement(InputValue value)
+    {
+        Vector2 V = value.Get<Vector2>();
 
+        horizontal = (int)V.x;
+        vertical = (int)V.y;
+    }
     
     void Update()
     {
-
-        horizontal = 0;
-        vertical = 0;
 
         GetKeyboardInput();
 
@@ -60,39 +52,39 @@ public class PlayerInput : MonoBehaviour
 
     void SetMovement()
     {
+
         if(vertical != 0)
         {
-            playerController.SetInputDirection((vertical == 1) ? 
-                PlayerDirection.UP : PlayerDirection.DOWN);
+            playerController.SetInputDirection((vertical == 1) ? PlayerDirection.UP : PlayerDirection.DOWN);
         }
         else if (horizontal != 0)
         {
-            playerController.SetInputDirection((horizontal == 1) ? 
-                PlayerDirection.RIGHT : PlayerDirection.LEFT);
+            playerController.SetInputDirection((horizontal == 1) ? PlayerDirection.RIGHT : PlayerDirection.LEFT);
         }
     }
 
     int GetAxisRaw(Axis axis)
     {
-        if(axis == Axis.Horizontal)
+        if (axis == Axis.Horizontal)
         {
-            bool left = Input.GetKeyDown(KeyCode.A);
-            bool right = Input.GetKeyDown(KeyCode.D);
+            bool left = horizontal == 1;
+            bool right = horizontal == -1;
 
             if(left)
             {
-                return -1;
+                return 1;
+                
             }
             if(right)
             {
-                return 1;
+                return -1;
             }
             return 0;
         }
         else if (axis == Axis.Vertical)
         {
-            bool up = Input.GetKeyDown(KeyCode.W);
-            bool down = Input.GetKeyDown(KeyCode.S);
+            bool up = vertical == 1;
+            bool down = vertical == -1;
 
             if(up)
             {

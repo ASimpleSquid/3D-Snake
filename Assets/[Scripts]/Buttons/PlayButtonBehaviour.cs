@@ -9,5 +9,12 @@ public class PlayButtonBehaviour : MonoBehaviour
     public void OnPlayButtonPressed()
     {
         SceneManager.LoadScene("GameplayScene");
+        Time.timeScale = 1f;
+    }
+
+    public void OnReplayButtonPressed()
+    {
+        SceneManager.GetActiveScene(); SceneManager.LoadScene("GameplayScene");
+        Time.timeScale = 1f;
     }
 }

@@ -349,6 +349,7 @@ GameObject:
   - component: {fileID: 3860021058138387764}
   - component: {fileID: 942881558}
   - component: {fileID: 8428021791854219179}
+  - component: {fileID: 772939998}
   m_Layer: 0
   m_Name: Snake
   m_TagString: Untagged
@@ -430,3 +431,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e534db11f12309245bafbf4e6113d8a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &772939998
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6999005566813169873}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Actions: {fileID: -944628639613478452, guid: b9a63af574ae27946b00eac4ed78e7a0, type: 3}
+  m_NotificationBehavior: 0
+  m_UIInputModule: {fileID: 0}
+  m_DeviceLostEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_DeviceRegainedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ControlsChangedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ActionEvents: []
+  m_NeverAutoSwitchControlSchemes: 0
+  m_DefaultControlScheme: 
+  m_DefaultActionMap: Player
+  m_SplitScreenIndex: -1
+  m_Camera: {fileID: 0}

@@ -20,6 +20,8 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField]
     private GameObject tail;
+    [SerializeField] 
+    GameObject gameOverMenu;
 
     private List<Vector3> delta_Position;
     private List<Rigidbody> nodes;
@@ -124,6 +126,15 @@ public class PlayerController : MonoBehaviour
             parentPos = prevPosition;
         }
 
+        if(create_Node_At_Tail)
+        {
+            create_Node_At_Tail = false;
+            GameObject newNode = Instantiate(tail, nodes[nodes.Count - 1].position, Quaternion.identity);
+
+            newNode.transform.SetParent(transform, true);
+            nodes.Add(newNode.GetComponent<Rigidbody>());
+        }
+
     }
 
     void CheckMovementFrequency()
@@ -160,9 +171,25 @@ public class PlayerController : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if(other.tag == Tags.WALL)
+        if (other.tag == "Wall")
         {
-            print("Touched Wall! Ouch!");
+            Time.timeScale = 0f;
+            gameOverMenu.SetActive(true);
+            Debug.Log("Touched Wall! Ouch!");
+        }
+
+        if (other.tag == "Bomb")
+        {
+            Time.timeScale = 0f;
+            gameOverMenu.SetActive(true);
+            Debug.Log("Ate a Bomb! Ouch!");
+        }
+
+        if (other.tag == "Pellet")
+        {
+            Debug.Log("Yummy!");
+            other.gameObject.SetActive(false);
+            create_Node_At_Tail = true;
         }
     }
 }
